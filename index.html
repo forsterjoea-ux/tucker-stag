@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tucker's Stag</title>
+<meta name="description" content="Everything the lads need for Tucker's stag in Porto and the Douro Valley.">
+<meta name="theme-color" content="#1d3a9e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231d3a9e'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' font-family='Arial Black,Arial' font-weight='900' fill='%23f6f8fc'%3ET%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cobalt: #1d3a9e;
+    --cobalt-deep: #12276e;
+    --tile: #f6f8fc;
+    --ruby: #7c1631;
+    --ochre: #d99a1e;
+    --ink: #151a2e;
+    --muted: #5a6280;
+    --line: #d6dcec;
+    --paper: #ffffff;
+    --radius-big: 18px;
+    --radius-small: 8px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--tile);
+    color: var(--ink);
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    font-optical-sizing: auto;
+    font-size: 17px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--cobalt); text-underline-offset: 3px; }
+  a:hover { color: var(--ruby); }
+  :focus-visible { outline: 3px solid var(--ochre); outline-offset: 2px; border-radius: 4px; }
+  button { font: inherit; cursor: pointer; }
+
+  /* Hero: the azulejo panel is the one loud thing on the page */
+  .hero {
+    position: relative;
+    padding: 40px 16px 56px;
+    background-color: var(--cobalt);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' fill='%23f6f8fc'/%3E%3Cg fill='none' stroke='%231d3a9e' stroke-width='3'%3E%3Ccircle cx='48' cy='48' r='18'/%3E%3Cpath d='M48 6 Q62 30 48 48 Q34 30 48 6Z M48 90 Q62 66 48 48 Q34 66 48 90Z M6 48 Q30 34 48 48 Q30 62 6 48Z M90 48 Q66 34 48 48 Q66 62 90 48Z'/%3E%3C/g%3E%3Cg fill='%231d3a9e'%3E%3Ccircle cx='48' cy='48' r='6'/%3E%3Cpath d='M0 0h14L0 14Z M96 0H82l14 14Z M0 96h14L0 82Z M96 96H82l14-14Z'/%3E%3C/g%3E%3Crect x='1' y='1' width='94' height='94' fill='none' stroke='%2312276e' stroke-opacity='.18' stroke-width='2'/%3E%3C/svg%3E");
+    background-size: 96px 96px;
+  }
+  .plaque {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 6px solid var(--cobalt);
+    outline: 2px solid var(--paper);
+    border-radius: var(--radius-big);
+    padding: 28px 24px 26px;
+    box-shadow: 0 18px 40px -18px rgba(18, 39, 110, .55);
+  }
+  .plaque h1 {
+    margin: 0;
+    font-size: clamp(54px, 15vw, 112px);
+    line-height: .86;
+    font-weight: 800;
+    font-stretch: 75%;
+    letter-spacing: -0.02em;
+    color: var(--cobalt);
+  }
+  .plaque h1 span { display: block; color: var(--ruby); }
+  .where {
+    margin: 18px 0 0;
+    font-size: 19px;
+    font-weight: 500;
+  }
+  .countdown {
+    margin: 14px 0 0;
+    font-size: 17px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .countdown strong { color: var(--ink); }
+
+  .notice {
+    max-width: 720px;
+    margin: -28px auto 0;
+    position: relative;
+    background: var(--ochre);
+    color: var(--ink);
+    border-radius: var(--radius-small);
+    padding: 12px 16px;
+    font-weight: 600;
+    box-shadow: 0 6px 18px -10px rgba(0,0,0,.35);
+  }
+  .notice-wrap { padding: 0 16px; }
+  .notice[hidden] { display: none; }
+
+  nav.jump {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(246, 248, 252, .94);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    margin-top: 24px;
+  }
+  nav.jump ul {
+    list-style: none; margin: 0 auto; padding: 10px 16px;
+    display: flex; gap: 6px; overflow-x: auto; max-width: 752px;
+    scrollbar-width: none;
+  }
+  nav.jump ul::-webkit-scrollbar { display: none; }
+  nav.jump a {
+    display: block; white-space: nowrap;
+    padding: 6px 12px; border-radius: 999px;
+    text-decoration: none; color: var(--cobalt-deep); font-weight: 600; font-size: 15px;
+    border: 1.5px solid var(--line); background: var(--paper);
+  }
+  nav.jump a:hover { border-color: var(--cobalt); color: var(--cobalt); }
+
+  main { max-width: 752px; margin: 0 auto; padding: 8px 16px 40px; }
+  section { padding-top: 36px; }
+  h2 {
+    font-size: 38px; line-height: 1; margin: 0 0 6px;
+    font-weight: 800; font-stretch: 80%; color: var(--cobalt-deep);
+    letter-spacing: -0.01em;
+  }
+  .lede { margin: 0 0 18px; color: var(--muted); max-width: 60ch; }
+
+  /* Itinerary */
+  .day { margin-top: 22px; }
+  .day-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; border-bottom: 2px solid var(--cobalt); padding-bottom: 6px; }
+  .day-head h3 { margin: 0; font-size: 26px; font-weight: 800; font-stretch: 85%; }
+  .day-head .theme { color: var(--ruby); font-weight: 600; }
+  .day-head .today { margin-left: auto; font-size: 14px; font-weight: 700; color: var(--paper); background: var(--ruby); padding: 2px 10px; border-radius: 999px; }
+  ol.items { list-style: none; margin: 0; padding: 0; }
+  .item {
+    display: grid; grid-template-columns: 82px 1fr; gap: 12px;
+    padding: 14px 0; border-bottom: 1px solid var(--line);
+  }
+  .item .time { font-weight: 700; font-variant-numeric: tabular-nums; color: var(--cobalt); padding-top: 2px; }
+  .item h4 { margin: 0; font-size: 19px; line-height: 1.25; font-weight: 700; }
+  .item p { margin: 4px 0 0; color: var(--muted); }
+  .item .meta { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 15px; }
+  .item.free .body {
+    border: 2px dashed var(--ochre); border-radius: var(--radius-small);
+    padding: 10px 12px; background: #fff8e8;
+  }
+  .item.free .tbc { color: #8a5d00; font-weight: 600; }
+  .item.now { background: linear-gradient(90deg, rgba(124,22,49,.08), transparent 70%); }
+  .item.now .time::after { content: "Now"; display: block; font-size: 12px; color: var(--paper); background: var(--ruby); width: max-content; padding: 0 7px; border-radius: 999px; margin-top: 4px; }
+  .item.next .time::after { content: "Next"; display: block; font-size: 12px; color: var(--ruby); border: 1.5px solid var(--ruby); width: max-content; padding: 0 6px; border-radius: 999px; margin-top: 4px; }
+
+  /* Villas */
+  .villas { display: grid; gap: 16px; }
+  @media (min-width: 640px) { .villas { grid-template-columns: 1fr 1fr; } }
+  .villa { background: var(--paper); border: 2px solid var(--cobalt); border-radius: var(--radius-big); padding: 18px; }
+  .villa h3 { margin: 0 0 4px; font-size: 22px; font-weight: 800; font-stretch: 90%; }
+  .villa p { margin: 0 0 12px; color: var(--muted); }
+  .villa dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; }
+  .villa dt { font-weight: 700; }
+  .villa dd { margin: 0; }
+  .missing { color: #8a5d00; font-style: italic; }
+
+  /* People */
+  .stag-card {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--ruby); color: var(--paper);
+    border-radius: var(--radius-big); padding: 16px 18px; margin-bottom: 14px;
+  }
+  .stag-card .crown { font-size: 34px; line-height: 1; }
+  .stag-card strong { display: block; font-size: 24px; font-stretch: 85%; }
+  ul.lads { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
+  ul.lads li { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-small); padding: 8px 12px; }
+  ul.lads .nick { display: block; color: var(--ruby); font-weight: 700; font-size: 15px; }
+
+  /* Lists */
+  ul.checks, ol.rules { margin: 0; padding: 0; list-style: none; }
+  ul.checks li { position: relative; padding: 8px 0 8px 34px; border-bottom: 1px solid var(--line); }
+  ul.checks input { position: absolute; left: 2px; top: 11px; width: 20px; height: 20px; accent-color: var(--cobalt); }
+  ul.checks label { cursor: pointer; }
+  ul.checks input:checked + label { color: var(--muted); text-decoration: line-through; }
+  ol.rules { counter-reset: rule; }
+  ol.rules li { counter-increment: rule; position: relative; padding: 10px 0 10px 44px; border-bottom: 1px solid var(--line); }
+  ol.rules li::before {
+    content: counter(rule); position: absolute; left: 0; top: 8px;
+    width: 30px; height: 30px; border-radius: 6px; display: grid; place-items: center;
+    background: var(--cobalt); color: var(--paper); font-weight: 800;
+  }
+
+  /* Help */
+  .contacts { display: grid; gap: 8px; }
+  .contact { display: flex; justify-content: space-between; align-items: center; gap: 12px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-small); padding: 12px 14px; }
+  .contact a.call { white-space: nowrap; font-weight: 700; text-decoration: none; background: var(--cobalt); color: var(--paper); padding: 6px 12px; border-radius: 999px; }
+  .contact a.call:hover { background: var(--ruby); color: var(--paper); }
+  .contact.sos { border: 2px solid var(--ruby); }
+  .contact.sos a.call { background: var(--ruby); }
+
+  /* Photos */
+  .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+  .gallery figure { margin: 0; position: relative; }
+  .gallery img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius-small); display: block; background: var(--line); }
+  .gallery figcaption { font-size: 14px; color: var(--muted); margin-top: 4px; }
+  .empty { border: 2px dashed var(--line); border-radius: var(--radius-big); padding: 24px; text-align: center; color: var(--muted); }
+
+  footer { max-width: 752px; margin: 0 auto; padding: 24px 16px 48px; color: var(--muted); font-size: 15px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; border-top: 1px solid var(--line); }
+  .admin-btn { background: none; border: 1.5px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--muted); }
+  .admin-btn:hover { border-color: var(--cobalt); color: var(--cobalt); }
+
+  /* Admin controls */
+  .edit, .add {
+    display: none; border: 1.5px solid var(--cobalt); background: var(--paper); color: var(--cobalt);
+    border-radius: 999px; padding: 2px 10px; font-size: 14px; font-weight: 600; margin-top: 8px;
+  }
+  .edit:hover, .add:hover { background: var(--cobalt); color: var(--paper); }
+  body.admin .edit, body.admin .add { display: inline-block; }
+  .admin-bar {
+    display: none; position: sticky; bottom: 0; z-index: 20;
+    background: var(--ink); color: var(--paper); padding: 10px 16px; font-size: 15px;
+    justify-content: space-between; align-items: center; gap: 10px;
+  }
+  body.admin .admin-bar { display: flex; }
+  .admin-bar button { background: var(--paper); color: var(--ink); border: 0; border-radius: 999px; padding: 4px 12px; font-weight: 600; }
+
+  dialog {
+    border: 0; border-radius: var(--radius-big); padding: 0; width: min(560px, calc(100vw - 24px));
+    max-height: calc(100vh - 40px); color: var(--ink);
+  }
+  dialog::backdrop { background: rgba(21, 26, 46, .55); }
+  dialog form { padding: 20px; }
+  dialog h3 { margin: 0 0 12px; font-size: 24px; font-stretch: 85%; }
+  dialog label.f { display: block; font-weight: 600; margin: 12px 0 4px; font-size: 15px; }
+  dialog input[type=text], dialog input[type=password], dialog textarea {
+    width: 100%; font: inherit; font-size: 16px; padding: 8px 10px;
+    border: 1.5px solid var(--line); border-radius: var(--radius-small); background: var(--tile);
+  }
+  dialog textarea { min-height: 110px; resize: vertical; }
+  dialog .hint { font-size: 14px; color: var(--muted); margin: 4px 0 0; }
+  dialog .row { display: flex; gap: 8px; justify-content: flex-end; margin-top: 18px; flex-wrap: wrap; }
+  dialog .row .danger { margin-right: auto; background: none; border: 1.5px solid var(--ruby); color: var(--ruby); }
+  dialog .row button { border-radius: 999px; padding: 8px 16px; border: 1.5px solid var(--cobalt); background: var(--paper); color: var(--cobalt); font-weight: 600; }
+  dialog .row button.primary { background: var(--cobalt); color: var(--paper); }
+  dialog .error { color: var(--ruby); font-weight: 600; margin: 10px 0 0; }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 64px; transform: translateX(-50%);
+    background: var(--ink); color: var(--paper); padding: 10px 16px; border-radius: 999px;
+    font-weight: 600; font-size: 15px; z-index: 50; max-width: calc(100vw - 32px); text-align: center;
+  }
+  .toast[hidden] { display: none; }
+
+  @media (max-width: 480px) {
+    .item { grid-template-columns: 68px 1fr; gap: 10px; }
+    h2 { font-size: 32px; }
+    .plaque { padding: 22px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="plaque">
+    <h1>Tucker's<span>Last Stand</span></h1>
+    <p class="where">Porto and the Douro Valley, Thursday 29 October to Sunday 1 November 2026</p>
+    <p class="countdown" id="countdown" aria-live="polite"></p>
+  </div>
+</header>
+
+<div class="notice-wrap">
+  <div class="notice" id="notice" hidden></div>
+  <div style="max-width:720px;margin:0 auto"><button class="edit" data-edit="notice">Edit notice</button></div>
+</div>
+
+<nav class="jump" aria-label="Sections">
+  <ul>
+    <li><a href="#plan">The plan</a></li>
+    <li><a href="#villas">Villas</a></li>
+    <li><a href="#lads">The lads</a></li>
+    <li><a href="#pack">Packing</a></li>
+    <li><a href="#rules">Rules</a></li>
+    <li><a href="#help">Help</a></li>
+    <li><a href="#photos">Photos</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section id="plan">
+    <h2>The plan</h2>
+    <p class="lede">All times are Portugal time, which is the same as UK time. Dashed boxes are free time; plans get added here as they're sorted.</p>
+    <div id="days"></div>
+  </section>
+
+  <section id="villas">
+    <h2>The villas</h2>
+    <p class="lede">Two villas in Melres, on the Douro about 40 minutes from Porto.</p>
+    <div class="villas" id="villa-list"></div>
+  </section>
+
+  <section id="lads">
+    <h2>The lads</h2>
+    <p class="lede" id="lads-count"></p>
+    <div class="stag-card" id="stag"></div>
+    <ul class="lads" id="lad-list"></ul>
+  </section>
+
+  <section id="pack">
+    <h2>Packing list</h2>
+    <p class="lede">Tick things off. Your ticks only save on your phone.</p>
+    <ul class="checks" id="pack-list"></ul>
+    <button class="edit" data-edit="packing">Edit packing list</button>
+  </section>
+
+  <section id="rules">
+    <h2>House rules</h2>
+    <p class="lede">Enforced without mercy. Forfeits are drinks, not money.</p>
+    <ol class="rules" id="rule-list"></ol>
+    <button class="edit" data-edit="rules">Edit rules</button>
+  </section>
+
+  <section id="help">
+    <h2>If it goes wrong</h2>
+    <p class="lede">Tap a number to call it. Lost passport or worse: use the <a href="https://www.contact.service.csd.fcdo.gov.uk/posts/portugal/british-embassy-lisbon" target="_blank" rel="noopener">British Embassy Lisbon emergency contact page</a>.</p>
+    <div class="contacts" id="contact-list"></div>
+    <button class="edit" data-edit="contacts">Edit contacts</button>
+  </section>
+
+  <section id="photos">
+    <h2>Evidence</h2>
+    <p class="lede">For the speech. And the group chat. And the wedding slideshow.</p>
+    <div id="gallery"></div>
+    <button class="add" id="add-photo">Add a photo</button>
+    <input type="file" id="photo-input" accept="image/*" hidden>
+  </section>
+</main>
+
+<footer>
+  <span id="updated">Made for Tucker's stag.</span>
+  <button class="admin-btn" id="admin-btn">Admin</button>
+</footer>
+
+<div class="admin-bar" role="region" aria-label="Admin mode">
+  <span>Admin mode. Changes go live for everyone in about a minute.</span>
+  <button id="lock-btn">Lock</button>
+</div>
+
+<dialog id="dlg"><form method="dialog" id="dlg-form"></form></dialog>
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+(() => {
+  // ---------- Where the site lives on GitHub ----------
+  const FALLBACK_REPO = { owner: "", repo: "tucker-stag" };
+  function repoInfo() {
+    const h = location.hostname;
+    if (h.endsWith(".github.io")) {
+      const owner = h.split(".")[0];
+      const first = location.pathname.split("/").filter(Boolean)[0];
+      return { owner, repo: first || h };
+    }
+    return FALLBACK_REPO;
+  }
+  const REPO = repoInfo();
+  const API = `https://api.github.com/repos/${REPO.owner}/${REPO.repo}`;
+  const TOKEN_KEY = "tuckerStagAdminToken";
+  const TZ = "Europe/Lisbon";
+
+  let data = null;
+  let adminToken = null;
+  const localPhotoPreviews = {};
+
+  const $ = (s) => document.querySelector(s);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch {} },
+    del(k) { try { localStorage.removeItem(k); } catch {} }
+  };
+
+  function toast(msg, ms = 3500) {
+    const t = $("#toast");
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._t); toast._t = setTimeout(() => (t.hidden = true), ms);
+  }
+
+  // ---------- Time helpers ----------
+  const SLOT = { morning: "09:00", daytime: "10:00", afternoon: "13:00", evening: "19:00", late: "22:00", night: "21:00" };
+  function itemTime(day, item) {
+    const raw = String(item.time || "").trim();
+    let hm = /^\d{1,2}:\d{2}$/.test(raw) ? raw : SLOT[raw.toLowerCase()];
+    if (!hm) return null;
+    const [h, m] = hm.split(":").map(Number);
+    // Portugal and UK are both UTC+0 from late October, so treat times as UTC.
+    return Date.UTC(+day.date.slice(0, 4), +day.date.slice(5, 7) - 1, +day.date.slice(8, 10), h, m);
+  }
+  function fmtDate(iso) {
+    const d = new Date(iso + "T12:00:00Z");
+    return d.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" });
+  }
+  function todayISO() {
+    return new Intl.DateTimeFormat("en-CA", { timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+  }
+
+  // ---------- Rendering ----------
+  function render() {
+    // Notice
+    const n = $("#notice");
+    n.textContent = data.notice || "";
+    n.hidden = !data.notice;
+
+    // Days
+    const now = Date.now();
+    const flat = [];
+    data.days.forEach((d, di) => d.items.forEach((it, ii) => flat.push({ di, ii, t: itemTime(d, it) })));
+    const timed = flat.filter((x) => x.t !== null).sort((a, b) => a.t - b.t);
+    let nowKey = null, nextKey = null;
+    const tripStart = timed[0]?.t, tripEnd = timed[timed.length - 1]?.t + 3 * 3600e3;
+    if (now >= tripStart && now <= tripEnd) {
+      const past = timed.filter((x) => x.t <= now);
+      if (past.length) nowKey = past[past.length - 1].di + "-" + past[past.length - 1].ii;
+      const fut = timed.find((x) => x.t > now);
+      if (fut) nextKey = fut.di + "-" + fut.ii;
+    } else if (now < tripStart && timed.length) {
+      nextKey = timed[0].di + "-" + timed[0].ii;
+    }
+    const today = todayISO();
+
+    $("#days").innerHTML = data.days.map((d, di) => `
+      <div class="day" id="day-${esc(d.name.toLowerCase())}">
+        <div class="day-head">
+          <h3>${esc(fmtDate(d.date))}</h3>
+          <span class="theme">${esc(d.theme)}</span>
+          ${d.date === today ? '<span class="today">Today</span>' : ""}
+        </div>
+        <ol class="items">
+          ${d.items.map((it, ii) => {
+            const key = di + "-" + ii;
+            const cls = ["item", it.free ? "free" : "", key === nowKey ? "now" : "", key === nextKey ? "next" : ""].join(" ");
+            const meta = [];
+            if (it.address) meta.push(`<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(it.address)}" target="_blank" rel="noopener">Map: ${esc(it.address)}</a>`);
+            if (it.phone) meta.push(`<a href="tel:${esc(it.phone.replace(/\s/g, ""))}">Call ${esc(it.phone)}</a>`);
+            if (it.link) meta.push(`<a href="${esc(it.link)}" ${it.link.startsWith("#") ? "" : 'target="_blank" rel="noopener"'}>${esc(it.linkText || "More info")}</a>`);
+            const detail = it.detail ? `<p>${esc(it.detail)}</p>` : (it.free ? '<p class="tbc">Free time. Plans to be confirmed.</p>' : "");
+            return `<li class="${cls}">
+              <div class="time">${esc(it.time)}</div>
+              <div class="body">
+                <h4>${esc(it.title)}</h4>
+                ${detail}
+                ${meta.length ? `<div class="meta">${meta.join("")}</div>` : ""}
+                <button class="edit" data-edit="item" data-day="${di}" data-item="${ii}">Edit</button>
+              </div>
+            </li>`;
+          }).join("")}
+        </ol>
+        <button class="add" data-add="item" data-day="${di}">Add to ${esc(d.name)}</button>
+      </div>`).join("");
+
+    // Villas
+    $("#villa-list").innerHTML = data.villas.map((v, vi) => `
+      <article class="villa">
+        <h3>${esc(v.name)}</h3>
+        <p>${esc(v.summary)}</p>
+        <dl>
+          <dt>Address</dt>
+          <dd>${v.address ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v.address)}" target="_blank" rel="noopener">${esc(v.address)}</a>` : '<span class="missing">Coming soon</span>'}</dd>
+          <dt>Check in</dt><dd>${v.checkin ? esc(v.checkin) : '<span class="missing">Coming soon</span>'}</dd>
+          <dt>Check out</dt><dd>${v.checkout ? esc(v.checkout) : '<span class="missing">Coming soon</span>'}</dd>
+          ${v.notes ? `<dt>Notes</dt><dd>${esc(v.notes)}</dd>` : ""}
+        </dl>
+        <p style="margin:12px 0 0"><a href="${esc(v.link)}" target="_blank" rel="noopener">See the listing on Airbnb</a></p>
+        <button class="edit" data-edit="villa" data-villa="${vi}">Edit villa</button>
+      </article>`).join("");
+
+    // People
+    const s = data.stag || {};
+    $("#stag").innerHTML = `<span class="crown" aria-hidden="true">🦌</span><div><strong>${esc(s.nick || s.name)}</strong>${esc(s.name)}, the condemned man</div>`;
+    $("#lads-count").textContent = `${data.people.length} lads plus the stag. Nobody gets left behind.`;
+    $("#lad-list").innerHTML = data.people.map((p) => `<li>${p.nick ? `<span class="nick">${esc(p.nick)}</span>` : ""}${esc(p.name)}</li>`).join("");
+
+    // Packing (ticks saved per phone)
+    let ticks = {};
+    try { ticks = JSON.parse(store.get("tuckerStagPacking") || "{}"); } catch {}
+    $("#pack-list").innerHTML = data.packing.map((p, i) => `
+      <li><input type="checkbox" id="pk${i}" data-key="${esc(p)}" ${ticks[p] ? "checked" : ""}><label for="pk${i}">${esc(p)}</label></li>`).join("");
+
+    $("#rule-list").innerHTML = data.rules.map((r) => `<li>${esc(r)}</li>`).join("");
+
+    $("#contact-list").innerHTML = data.contacts.map((c) => `
+      <div class="contact ${c.phone === "112" ? "sos" : ""}">
+        <span>${esc(c.name)}</span>
+        ${c.phone ? `<a class="call" href="tel:${esc(c.phone.replace(/\s/g, ""))}">${esc(c.phone)}</a>` : ""}
+      </div>`).join("");
+
+    const photos = data.photos || [];
+    $("#gallery").innerHTML = photos.length
+      ? `<div class="gallery">${photos.map((p, i) => `
+          <figure>
+            <a href="${esc(localPhotoPreviews[p.src] || p.src)}" target="_blank" rel="noopener"><img src="${esc(localPhotoPreviews[p.src] || p.src)}" alt="${esc(p.caption || "Stag photo")}" loading="lazy"></a>
+            ${p.caption ? `<figcaption>${esc(p.caption)}</figcaption>` : ""}
+            <button class="edit" data-edit="photo" data-photo="${i}">Edit</button>
+          </figure>`).join("")}</div>`
+      : `<div class="empty">No photos yet. Tucker is nervous, and he should be.</div>`;
+  }
+
+  // ---------- Countdown ----------
+  function tick() {
+    const el = $("#countdown");
+    if (!data) return;
+    const first = itemTime(data.days[0], data.days[0].items[0]);
+    const lastDay = data.days[data.days.length - 1];
+    const end = itemTime(lastDay, lastDay.items[lastDay.items.length - 1]) + 3 * 3600e3;
+    const now = Date.now();
+    if (now < first) {
+      let s = Math.floor((first - now) / 1000);
+      const d = Math.floor(s / 86400); s %= 86400;
+      const h = Math.floor(s / 3600); s %= 3600;
+      const m = Math.floor(s / 60);
+      el.innerHTML = `Wheels up at Gatwick in <strong>${d ? d + "d " : ""}${h}h ${m}m</strong>`;
+    } else if (now <= end) {
+      el.innerHTML = "<strong>It's happening.</strong> Check what's on now below.";
+    } else {
+      el.innerHTML = "<strong>It's over.</strong> Recovery is ongoing.";
+    }
+  }
+
+  // ---------- Packing ticks ----------
+  document.addEventListener("change", (e) => {
+    if (e.target.matches("#pack-list input")) {
+      let ticks = {};
+      try { ticks = JSON.parse(store.get("tuckerStagPacking") || "{}"); } catch {}
+      ticks[e.target.dataset.key] = e.target.checked;
+      store.set("tuckerStagPacking", JSON.stringify(ticks));
+    }
+  });
+
+  // ---------- GitHub API (admin only) ----------
+  function b64encode(str) {
+    const bytes = new TextEncoder().encode(str);
+    let bin = ""; bytes.forEach((b) => (bin += String.fromCharCode(b)));
+    return btoa(bin);
+  }
+  function b64decode(b64) {
+    const bin = atob(b64.replace(/\n/g, ""));
+    return new TextDecoder().decode(Uint8Array.from(bin, (c) => c.charCodeAt(0)));
+  }
+  async function gh(path, opts = {}) {
+    const res = await fetch(API + path, {
+      ...opts,
+      headers: { Accept: "application/vnd.github+json", Authorization: `Bearer ${adminToken}`, ...(opts.headers || {}) }
+    });
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      const err = new Error(body.message || `GitHub returned ${res.status}`);
+      err.status = res.status; throw err;
+    }
+    return res.status === 204 ? null : res.json();
+  }
+  async function fetchLatestFromGitHub() {
+    const f = await gh(`/contents/data.json?ref=main&t=${Date.now()}`);
+    return { json: JSON.parse(b64decode(f.content)), sha: f.sha };
+  }
+  async function putFile(path, contentB64, message, sha) {
+    return gh(`/contents/${path}`, {
+      method: "PUT",
+      body: JSON.stringify({ message, content: contentB64, branch: "main", ...(sha ? { sha } : {}) })
+    });
+  }
+  async function saveData(message) {
+    const { sha } = await fetchLatestFromGitHub();
+    data.updatedAt = new Date().toISOString();
+    await putFile("data.json", b64encode(JSON.stringify(data, null, 2) + "\n"), message, sha);
+    render();
+    toast("Saved. Live for everyone in about a minute.");
+  }
+
+  async function unlock(token) {
+    adminToken = token;
+    const repo = await gh("");
+    if (!repo.permissions || !repo.permissions.push) throw new Error("That token can't edit this site.");
+    const latest = await fetchLatestFromGitHub();
+    data = latest.json;
+    store.set(TOKEN_KEY, token);
+    document.body.classList.add("admin");
+    render();
+  }
+  function lock() {
+    adminToken = null;
+    store.del(TOKEN_KEY);
+    document.body.classList.remove("admin");
+    toast("Locked.");
+  }
+
+  // ---------- Dialog / editor ----------
+  const dlg = $("#dlg"), form = $("#dlg-form");
+  function openEditor({ title, fields, values = {}, onSave, onDelete, intro = "" }) {
+    form.innerHTML = `
+      <h3>${esc(title)}</h3>
+      ${intro}
+      ${fields.map((f) => {
+        const v = values[f.key] ?? "";
+        if (f.type === "checkbox") return `<label class="f"><input type="checkbox" name="${f.key}" ${v ? "checked" : ""}> ${esc(f.label)}</label>`;
+        if (f.type === "textarea") return `<label class="f" for="fld-${f.key}">${esc(f.label)}</label><textarea id="fld-${f.key}" name="${f.key}">${esc(v)}</textarea>${f.hint ? `<p class="hint">${esc(f.hint)}</p>` : ""}`;
+        return `<label class="f" for="fld-${f.key}">${esc(f.label)}</label><input id="fld-${f.key}" type="${f.type || "text"}" name="${f.key}" value="${esc(v)}" autocomplete="off">${f.hint ? `<p class="hint">${esc(f.hint)}</p>` : ""}`;
+      }).join("")}
+      <p class="error" id="dlg-error" hidden></p>
+      <div class="row">
+        ${onDelete ? '<button type="button" class="danger" id="dlg-del">Delete</button>' : ""}
+        <button type="button" id="dlg-cancel">Cancel</button>
+        <button type="submit" class="primary" id="dlg-save">Save</button>
+      </div>`;
+    const errEl = $("#dlg-error");
+    const run = async (fn) => {
+      const btns = form.querySelectorAll("button"); btns.forEach((b) => (b.disabled = true));
+      errEl.hidden = true;
+      try { await fn(); dlg.close(); }
+      catch (e) { errEl.textContent = e.message || String(e); errEl.hidden = false; }
+      finally { btns.forEach((b) => (b.disabled = false)); }
+    };
+    $("#dlg-cancel").onclick = () => dlg.close();
+    if (onDelete) $("#dlg-del").onclick = () => { if (confirm("Delete this for everyone?")) run(onDelete); };
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      const out = {};
+      fields.forEach((f) => {
+        const el = form.elements[f.key];
+        out[f.key] = f.type === "checkbox" ? el.checked : el.value.trim();
+      });
+      run(() => onSave(out));
+    };
+    dlg.showModal();
+  }
+
+  const ITEM_FIELDS = [
+    { key: "time", label: "Time", hint: "Like 18:00, or a word such as Evening or Late." },
+    { key: "title", label: "What's happening" },
+    { key: "detail", label: "Details", type: "textarea" },
+    { key: "address", label: "Address (adds a map link)" },
+    { key: "link", label: "Link" },
+    { key: "linkText", label: "Link text" },
+    { key: "free", label: "Free time (shows as a dashed box)", type: "checkbox" }
+  ];
+
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-edit],[data-add]");
+    if (!b || !adminToken) return;
+    const kind = b.dataset.edit || b.dataset.add;
+
+    if (kind === "notice") {
+      openEditor({ title: "Edit the notice", fields: [{ key: "notice", label: "Notice at the top", type: "textarea", hint: "Leave empty to hide it." }],
+        values: { notice: data.notice }, onSave: async (v) => { data.notice = v.notice; await saveData("Update notice"); } });
+    }
+    if (kind === "item" && b.dataset.edit) {
+      const d = data.days[+b.dataset.day], it = d.items[+b.dataset.item];
+      openEditor({ title: `Edit ${d.name}`, fields: ITEM_FIELDS, values: it,
+        onSave: async (v) => { Object.keys(v).forEach((k) => { if (v[k] === "" || v[k] === false) delete it[k]; else it[k] = v[k]; }); await saveData(`Update ${d.name}: ${it.title}`); },
+        onDelete: async () => { d.items.splice(+b.dataset.item, 1); await saveData(`Remove from ${d.name}`); } });
+    }
+    if (kind === "item" && b.dataset.add) {
+      const d = data.days[+b.dataset.day];
+      openEditor({ title: `Add to ${d.name}`, fields: ITEM_FIELDS, values: { free: true },
+        onSave: async (v) => {
+          const it = {}; Object.keys(v).forEach((k) => { if (v[k] !== "" && v[k] !== false) it[k] = v[k]; });
+          if (!it.title) throw new Error("Give it a title.");
+          d.items.push(it);
+          d.items.sort((a, b2) => (itemTime(d, a) ?? 0) - (itemTime(d, b2) ?? 0));
+          await saveData(`Add to ${d.name}: ${it.title}`);
+        } });
+    }
+    if (kind === "villa") {
+      const v0 = data.villas[+b.dataset.villa];
+      openEditor({ title: `Edit ${v0.name}`, values: v0, fields: [
+        { key: "address", label: "Address", hint: "From the Airbnb booking confirmation." },
+        { key: "checkin", label: "Check in" }, { key: "checkout", label: "Check out" },
+        { key: "summary", label: "Description", type: "textarea" },
+        { key: "notes", label: "Notes (door codes, who's sleeping where)", type: "textarea", hint: "This page is public. Don't put door codes here unless you're happy with that." }
+      ], onSave: async (v) => { Object.assign(v0, v); await saveData(`Update ${v0.name}`); } });
+    }
+    if (kind === "packing" || kind === "rules") {
+      const label = kind === "packing" ? "Packing list" : "House rules";
+      openEditor({ title: `Edit ${label.toLowerCase()}`, values: { list: data[kind].join("\n") },
+        fields: [{ key: "list", label, type: "textarea", hint: "One per line." }],
+        onSave: async (v) => { data[kind] = v.list.split("\n").map((s) => s.trim()).filter(Boolean); await saveData(`Update ${label.toLowerCase()}`); } });
+    }
+    if (kind === "contacts") {
+      openEditor({ title: "Edit contacts", values: { list: data.contacts.map((c) => `${c.name} | ${c.phone || ""}`).join("\n") },
+        fields: [{ key: "list", label: "Contacts", type: "textarea", hint: "One per line, as: Name | phone number" }],
+        onSave: async (v) => {
+          data.contacts = v.list.split("\n").map((l) => l.split("|")).filter((p) => p[0].trim()).map((p) => ({ name: p[0].trim(), phone: (p[1] || "").trim() }));
+          await saveData("Update contacts");
+        } });
+    }
+    if (kind === "photo") {
+      const p = data.photos[+b.dataset.photo];
+      openEditor({ title: "Edit photo", values: p, fields: [{ key: "caption", label: "Caption" }],
+        onSave: async (v) => { p.caption = v.caption; await saveData("Update photo caption"); },
+        onDelete: async () => { data.photos.splice(+b.dataset.photo, 1); await saveData("Remove photo"); } });
+    }
+  });
+
+  // ---------- Photo upload ----------
+  $("#add-photo").addEventListener("click", () => adminToken && $("#photo-input").click());
+  $("#photo-input").addEventListener("change", async (e) => {
+    const file = e.target.files[0]; e.target.value = "";
+    if (!file) return;
+    try {
+      toast("Shrinking and uploading…", 60000);
+      const blobUrl = URL.createObjectURL(file);
+      const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error("Couldn't read that image.")); i.src = blobUrl; });
+      const scale = Math.min(1, 1600 / Math.max(img.width, img.height));
+      const c = document.createElement("canvas");
+      c.width = Math.round(img.width * scale); c.height = Math.round(img.height * scale);
+      c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+      const dataUrl = c.toDataURL("image/jpeg", 0.82);
+      const path = `photos/${Date.now()}.jpg`;
+      await putFile(path, dataUrl.split(",")[1], "Add photo");
+      localPhotoPreviews[path] = dataUrl;
+      const caption = prompt("Caption? (optional)") || "";
+      data.photos = data.photos || [];
+      data.photos.unshift({ src: path, caption });
+      await saveData("Add photo to gallery");
+    } catch (err) {
+      toast("Upload failed: " + (err.message || err), 6000);
+    }
+  });
+
+  // ---------- Admin unlock ----------
+  $("#admin-btn").addEventListener("click", () => {
+    if (adminToken) { lock(); return; }
+    if (!REPO.owner) { toast("Admin editing works once the site is on GitHub Pages."); return; }
+    openEditor({
+      title: "Admin unlock",
+      intro: `<p class="hint">Only people with edit access to the <strong>${esc(REPO.repo)}</strong> repo on GitHub can change this page. Paste a GitHub access token with write access to that repo. It's saved on this phone only.</p>`,
+      fields: [{ key: "token", label: "GitHub token", type: "password" }],
+      onSave: async (v) => { if (!v.token) throw new Error("Paste a token first."); await unlock(v.token); toast("Unlocked. Edit buttons are now showing."); }
+    });
+  });
+  $("#lock-btn").addEventListener("click", lock);
+
+  // ---------- Boot ----------
+  async function boot() {
+    try {
+      const res = await fetch(`data.json?t=${Date.now()}`, { cache: "no-store" });
+      data = await res.json();
+    } catch {
+      $("#days").innerHTML = '<p class="empty">The plan didn\'t load. Check your signal and refresh.</p>';
+      return;
+    }
+    if (data.updatedAt) {
+      $("#updated").textContent = "Last updated " + new Date(data.updatedAt).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: TZ });
+    }
+    render(); tick(); setInterval(() => { tick(); }, 30000);
+    setInterval(render, 5 * 60000);
+    const saved = store.get(TOKEN_KEY);
+    if (saved && REPO.owner) unlock(saved).catch(() => store.del(TOKEN_KEY));
+  }
+  boot();
+})();
+</script>
+</body>
+</html>
