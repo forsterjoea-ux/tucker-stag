@@ -19,7 +19,7 @@
       "items": [
         { "time": "Daytime", "title": "Optional watersports and Melres beers", "detail": "", "free": true },
         { "time": "15:00", "title": "Leave for Porto", "detail": "" },
-        { "time": "18:00", "title": "Douro River party boat", "detail": "Boards in Vila Nova de Gaia, across the river from Porto. Sunset sailing.", "address": "Av. de Ramos Pinto 710, 4400-161 Vila Nova de Gaia", "link": "https://www.viator.com/en-GB/tours/Porto/Porto-Douro-River-Party-Boat-with-Sunset-option/d26879-416792P1", "linkText": "See the boat party" },
+        { "time": "16:30", "title": "Douro River party boat", "detail": "Boards in Vila Nova de Gaia, across the river from Porto. Sunset sailing.", "address": "Av. de Ramos Pinto 710, 4400-161 Vila Nova de Gaia", "link": "https://www.viator.com/en-GB/tours/Porto/Porto-Douro-River-Party-Boat-with-Sunset-option/d26879-416792P1", "linkText": "See the boat party" },
         { "time": "Late", "title": "Porto night out", "detail": "", "free": true }
       ]
     },
@@ -40,6 +40,7 @@
       "theme": "Survival",
       "items": [
         { "time": "11:00", "title": "Check out of the villas", "detail": "Leave them how you found them. Roughly." },
+        { "time": "11:30", "title": "Golf at Estela, for those who signed up", "detail": "Tee off 11:30. Golf attire required, so no stag outfits on the course.", "address": "Estela Golf Club, Póvoa de Varzim", "link": "https://www.visitportugal.com/en/NR/exeres/40A015D9-6AED-412F-9A5F-6495DAEDA60E", "linkText": "About Estela Golf Club" },
         { "time": "Afternoon", "title": "Back into Porto and a walking tour", "detail": "", "free": true },
         { "time": "21:00", "title": "Flight home to Gatwick", "detail": "The main group flies back around 9pm. Check your own booking for the exact time." }
       ]
