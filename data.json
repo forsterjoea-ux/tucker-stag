@@ -6,10 +6,29 @@
       "name": "Thursday",
       "theme": "Arrival and icebreaker",
       "items": [
-        { "time": "09:30", "title": "Flight out of Gatwick", "detail": "Gatwick to Porto. Get there two hours early and check your terminal on your own booking." },
-        { "time": "11:30", "title": "Land in Porto and pick up the hire cars", "detail": "Drivers, bring your licence. Everyone else, try to look useful." },
-        { "time": "15:00", "title": "Check in to the villas in Melres", "detail": "Sort out rooms. The pools will be cold. Someone will go in anyway.", "link": "#villas", "linkText": "Villa details" },
-        { "time": "Evening", "title": "Icebreaker and enjoy the Douro", "detail": "", "free": true }
+        {
+          "time": "09:30",
+          "title": "Flight out of Gatwick",
+          "detail": "Gatwick to Porto. Get there two hours early and check your terminal on your own booking."
+        },
+        {
+          "time": "11:30",
+          "title": "Land in Porto and pick up the hire cars",
+          "detail": "Drivers, bring your licence. Everyone else, try to look useful."
+        },
+        {
+          "time": "15:00",
+          "title": "Check in to the villas in Melres",
+          "detail": "Sort out rooms. The pools will be cold. Someone will go in anyway.",
+          "link": "#villas",
+          "linkText": "Villa details"
+        },
+        {
+          "time": "Evening",
+          "title": "Icebreaker and enjoy the Douro",
+          "detail": "",
+          "free": true
+        }
       ]
     },
     {
@@ -17,10 +36,31 @@
       "name": "Friday",
       "theme": "River day",
       "items": [
-        { "time": "Daytime", "title": "Optional watersports and Melres beers", "detail": "", "free": true },
-        { "time": "15:00", "title": "Leave for Porto", "detail": "" },
-        { "time": "16:30", "title": "Douro River party boat", "detail": "Boards in Vila Nova de Gaia, across the river from Porto. Sunset sailing.", "address": "Av. de Ramos Pinto 710, 4400-161 Vila Nova de Gaia", "link": "https://www.viator.com/en-GB/tours/Porto/Porto-Douro-River-Party-Boat-with-Sunset-option/d26879-416792P1", "linkText": "See the boat party" },
-        { "time": "Late", "title": "Porto night out", "detail": "", "free": true }
+        {
+          "time": "Daytime",
+          "title": "Optional watersports and Melres beers",
+          "detail": "",
+          "free": true
+        },
+        {
+          "time": "15:00",
+          "title": "Leave for Porto",
+          "detail": ""
+        },
+        {
+          "time": "16:30",
+          "title": "Douro River party boat",
+          "detail": "Boards in Vila Nova de Gaia, across the river from Porto. Sunset sailing.",
+          "address": "Av. de Ramos Pinto 710, 4400-161 Vila Nova de Gaia",
+          "link": "https://www.viator.com/en-GB/tours/Porto/Porto-Douro-River-Party-Boat-with-Sunset-option/d26879-416792P1",
+          "linkText": "See the boat party"
+        },
+        {
+          "time": "Late",
+          "title": "Porto night out",
+          "detail": "",
+          "free": true
+        }
       ]
     },
     {
@@ -28,10 +68,31 @@
       "name": "Saturday",
       "theme": "Port, then Halloween in Porto",
       "items": [
-        { "time": "08:30", "title": "Coach pick-up from the villas", "detail": "Late for the coach means you wear tonight's outfit. Rules are rules." },
-        { "time": "11:00", "title": "Quinta do Bomfim vineyard tour and tasting", "detail": "Symington's estate in Pinhão, deep in the Douro valley. Pace yourself. You won't.", "address": "Largo do Videira, 5085-060 Pinhão", "phone": "+351 254 730 370", "link": "https://www.symington.com/visit/quinta-do-bomfim/", "linkText": "See Quinta do Bomfim" },
-        { "time": "17:00", "title": "Coach to Porto", "detail": "" },
-        { "time": "Evening", "title": "Saturday night in Porto", "detail": "It's Halloween.", "free": true }
+        {
+          "time": "08:30",
+          "title": "Coach pick-up from the villas",
+          "detail": "Late for the coach means you wear tonight's outfit. Rules are rules."
+        },
+        {
+          "time": "11:00",
+          "title": "Quinta do Bomfim vineyard tour and tasting",
+          "detail": "Symington's estate in Pinhão, deep in the Douro valley. Pace yourself. You won't.",
+          "address": "Largo do Videira, 5085-060 Pinhão",
+          "phone": "+351 254 730 370",
+          "link": "https://www.symington.com/visit/quinta-do-bomfim/",
+          "linkText": "See Quinta do Bomfim"
+        },
+        {
+          "time": "17:00",
+          "title": "Coach to Porto",
+          "detail": ""
+        },
+        {
+          "time": "Evening",
+          "title": "Saturday night in Porto",
+          "detail": "It's Halloween.",
+          "free": true
+        }
       ]
     },
     {
@@ -39,54 +100,120 @@
       "name": "Sunday",
       "theme": "Survival",
       "items": [
-        { "time": "11:00", "title": "Check out of the villas", "detail": "Leave them how you found them. Roughly." },
-        { "time": "11:30", "title": "Golf at Estela, for those who signed up", "detail": "Tee off 11:30. Golf attire required, so no stag outfits on the course.", "address": "Estela Golf Club, Póvoa de Varzim", "link": "https://www.visitportugal.com/en/NR/exeres/40A015D9-6AED-412F-9A5F-6495DAEDA60E", "linkText": "About Estela Golf Club" },
-        { "time": "Afternoon", "title": "Back into Porto and a walking tour", "detail": "", "free": true },
-        { "time": "21:00", "title": "Flight home to Gatwick", "detail": "The main group flies back around 9pm. Check your own booking for the exact time." }
+        {
+          "time": "11:00",
+          "title": "Check out of the villas",
+          "detail": "Leave them how you found them. Roughly."
+        },
+        {
+          "time": "11:30",
+          "title": "Golf at Estela, for those who signed up",
+          "detail": "Tee off 11:30. Golf attire required, so no stag outfits on the course.",
+          "address": "Estela Golf Club, Póvoa de Varzim",
+          "link": "https://www.visitportugal.com/en/NR/exeres/40A015D9-6AED-412F-9A5F-6495DAEDA60E",
+          "linkText": "About Estela Golf Club"
+        },
+        {
+          "time": "Afternoon",
+          "title": "Back into Porto and a walking tour",
+          "detail": "",
+          "free": true
+        },
+        {
+          "time": "21:00",
+          "title": "Flight home to Gatwick",
+          "detail": "The main group flies back around 9pm. Check your own booking for the exact time."
+        }
       ]
     }
   ],
   "villas": [
     {
-      "name": "Quinta dos Moinhos",
+      "name": "Party town (Quinta dos Moinhos)",
       "summary": "The big one. 7 bedrooms, pool, a bar in the pool house, BBQ, parking.",
-      "address": "",
+      "address": "Avenida José Joaquim Ferreira 2000, Melres, Porto 4515",
       "checkin": "15:00 Thursday",
       "checkout": "11:00 Sunday",
       "link": "https://www.airbnb.co.uk/rooms/18178588",
       "notes": ""
     },
     {
-      "name": "Douro Charming Chalet",
+      "name": "Retirement village (Douro Charming Chalet)",
       "summary": "The overflow. 4 bedrooms, pool, BBQ, and a football and basketball court.",
-      "address": "",
+      "address": "Rua do Sobreiro 34, Melres, Porto 4515-469",
       "checkin": "15:00 Thursday",
       "checkout": "11:00 Sunday",
       "link": "https://www.airbnb.co.uk/rooms/37458938",
       "notes": ""
     }
   ],
-  "stag": { "name": "Gary Tucker", "nick": "Tucker" },
+  "stag": {
+    "name": "Gary Tucker",
+    "nick": "Tucker"
+  },
   "people": [
-    { "name": "Adrian Carter" },
-    { "name": "Ben NS" },
-    { "name": "Bill Gage" },
-    { "name": "Byrney" },
-    { "name": "Callum", "nick": "Cal" },
-    { "name": "Colin Carter" },
-    { "name": "Dhillion", "nick": "Dodds" },
-    { "name": "Isaac Hall" },
-    { "name": "Jack Wheatley" },
-    { "name": "Joe F" },
-    { "name": "Joe Snell" },
-    { "name": "Josh Ramsay", "nick": "Rambo" },
-    { "name": "Keith Antony" },
-    { "name": "Kenny Moran" },
-    { "name": "Kunu" },
-    { "name": "Roger Antony" },
-    { "name": "Sam Hall" },
-    { "name": "Stephen Causbrook", "nick": "Coops" },
-    { "name": "Steve", "nick": "The Cousin" }
+    {
+      "name": "Adrian Carter"
+    },
+    {
+      "name": "Ben NS"
+    },
+    {
+      "name": "Bill Gage"
+    },
+    {
+      "name": "Byrney"
+    },
+    {
+      "name": "Callum",
+      "nick": "Cal"
+    },
+    {
+      "name": "Colin Carter"
+    },
+    {
+      "name": "Dhillion",
+      "nick": "Dodds"
+    },
+    {
+      "name": "Isaac Hall"
+    },
+    {
+      "name": "Jack Wheatley"
+    },
+    {
+      "name": "Joe F"
+    },
+    {
+      "name": "Joe Snell"
+    },
+    {
+      "name": "Josh Ramsay",
+      "nick": "Rambo"
+    },
+    {
+      "name": "Keith Antony"
+    },
+    {
+      "name": "Kenny Moran"
+    },
+    {
+      "name": "Kunu"
+    },
+    {
+      "name": "Roger Antony"
+    },
+    {
+      "name": "Sam Hall"
+    },
+    {
+      "name": "Stephen Causbrook",
+      "nick": "Coops"
+    },
+    {
+      "name": "Steve",
+      "nick": "The Cousin"
+    }
   ],
   "packing": [
     "Passport (in date, obviously)",
@@ -110,9 +237,18 @@
     "What happens in the Douro stays in the Douro. Except the photos. Those go below."
   ],
   "contacts": [
-    { "name": "Emergency services (police, ambulance, fire)", "phone": "112" },
-    { "name": "SNS 24 health line, for anything not an emergency", "phone": "808 24 24 24" },
-    { "name": "Quinta do Bomfim (vineyard)", "phone": "+351 254 730 370" }
+    {
+      "name": "Emergency services (police, ambulance, fire)",
+      "phone": "112"
+    },
+    {
+      "name": "SNS 24 health line, for anything not an emergency",
+      "phone": "808 24 24 24"
+    },
+    {
+      "name": "Quinta do Bomfim (vineyard)",
+      "phone": "+351 254 730 370"
+    }
   ],
   "photos": []
 }
